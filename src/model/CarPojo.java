@@ -24,16 +24,20 @@ public class CarPojo {
 	private String model;
 
 	@Column(name = "YEAR")
-	private int year;
+	private String year;
 
 	public CarPojo() {
 		super();
 	}
 
-	public CarPojo(String make, String model, int year) {
+	public CarPojo(String make, String model, String year) {
 		this.make = make;
 		this.model = model;
 		this.year = year;
+	}
+	public CarPojo(String make, String model) {
+		this.make = make;
+		this.model = model;
 	}
 
 	public int getId() {
@@ -60,11 +64,11 @@ public class CarPojo {
 		this.model = model;
 	}
 
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 

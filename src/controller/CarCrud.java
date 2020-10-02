@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import model.CarPojo;
 
+
 public class CarCrud {
 	// Md Ahmed
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("VehicleCar");
@@ -29,14 +30,17 @@ public class CarCrud {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<CarPojo> typedQuery = em.createQuery(
-				"select li from CarPojo li where li.make = :selectedMake, li.model = :selectedModel and  li.year = :selectedYear",
-				CarPojo.class);
+				"select li from CarPojo li where li.make = :selectedMake and li.model = :selectedModel", CarPojo.class);
 
 		// Substitute parameter with actual data from the toDelete item
 		typedQuery.setParameter("selectedMake", toDelete.getMake());
 		typedQuery.setParameter("selectedModel", toDelete.getModel());
-		typedQuery.setParameter("selectedYear", toDelete.getYear());
-
+		//typedQuery.setParameter("selectedYear", toDelete.getYear());
+//TypedQuery<ListItem> typedQuery = em.createQuery("select li from ListItem li where li.store = :selectedStore and li.item = :selectedItem", ListItem.class);
+//		
+//		//Substitute parameter with actual data from the	toDelete item
+//		typedQuery.setParameter("selectedStore", toDelete.getStore());
+//		typedQuery.setParameter("selectedItem",	toDelete.getItem());
 		// we only want one result
 		typedQuery.setMaxResults(1);
 

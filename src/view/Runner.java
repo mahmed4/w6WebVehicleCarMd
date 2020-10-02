@@ -21,7 +21,7 @@ public class Runner {
 		System.out.print("Enter a model: ");
 		String model = in.nextLine();
 		System.out.print("Enter a year: ");
-		int year = in.nextInt();
+		String year = in.nextLine();
 
 		CarPojo toAdd = new CarPojo(make, model, year);
 		Car.insertItem(toAdd);
@@ -33,9 +33,9 @@ public class Runner {
 		String make = in.nextLine();
 		System.out.print("Enter the model to delete: ");
 		String model = in.nextLine();
-		System.out.print("Enter the year to delete: ");
-		int year = in.nextInt();
-		CarPojo toDelete = new CarPojo(make, model, year);
+//		System.out.print("Enter the year to delete: ");
+//		int year = in.nextInt();
+		CarPojo toDelete = new CarPojo(make, model);
 		Car.deleteItem(toDelete);
 	}
 
@@ -72,7 +72,7 @@ public class Runner {
 
 			CarPojo toEdit = Car.searchForItemById(idToEdit);
 			System.out.println("Retrieved result Make: " + toEdit.getMake() + " Model: " + toEdit.getModel() + " Year: "
-					+ toEdit.getModel());
+					+ toEdit.getYear());
 			System.out.println("1 : Update Make");
 			System.out.println("2 : Update Model");
 			System.out.println("3 : Update Year");
@@ -89,7 +89,7 @@ public class Runner {
 				toEdit.setModel(newModel);
 			} else if (update == 3) {
 				System.out.print("New Year: ");
-				int newYear = in.nextInt();
+				String newYear = in.nextLine();
 				toEdit.setYear(newYear);
 			}
 
