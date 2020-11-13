@@ -3,12 +3,35 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>md-motor</title>
+<script>
+      function validate() {
+      
+         if( document.myForm.make.value == "" ) {
+            alert( "Please provide make!" );
+            document.myForm.make.focus() ;
+            return false;
+         }
+         if( document.myForm.model.value == "" ) {
+            alert( "Please provide model!" );
+            document.myForm.model.focus() ;
+            return false;
+         }
+         if( document.myForm.year.value == "" || isNaN( document.myForm.year.value ) ||
+            document.myForm.year.value.length != 4 ) {
+            
+            alert( "Please provide a Year in the format ####." );
+            document.myForm.year.focus() ;
+            return false;
+         }
+         return( true );
+      }
+</script>
 </head>
 <body>
 <h1>Welcome to MD-Motor</h1>
 <h2>You can Add View Delete Vehicle on the list</h2>
-<form action = "addItemServlet" method="post">
-Make: <input type ="text" name = "make">
+<form action = "addItemServlet" method="post" name = "myForm" onsubmit = "return validate();">
+ Make: <input type ="text" name = "make">
 Model: <input type = "text" name = "model">
 Year: <input type = "text" name = "year">
 <input type = "submit" value="Add Item">
